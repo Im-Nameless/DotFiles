@@ -1,5 +1,5 @@
 set folder      = imaps://imap.gmail.com/
-set imap_user   = anthony@poklik.ca
+set imap_user   = *******@******.ca
 #set imap_pass   = your-imap-password
 set spoolfile   = +INBOX
 mailboxes       = +INBOX
