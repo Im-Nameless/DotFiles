@@ -48,7 +48,7 @@ echo "Enter Password for $USERNAME"
 arch-chroot /mnt passwd $USERNAME
 
 # Install additional packages
-pacstrap /mnt base-devel grub efibootmgr sudo xorg xterm xorg-twm xorg-xinit i3-gaps pulseaudio pavucontrol rxvt-unicode ranger rofi nemo blender darktable zsh xdg-user-dirs wget w3m feh vim unzip unrar ttf-dejavu steam openvpn okular obs-studio networkmanager networkmanager-openvpn network-manager-applet neomutt neofetch mesa rtorrent krita inkscape imagemagick curl compton cmus audacity firefox qt4 vlc gimp libreoffice go git
+pacstrap /mnt base-devel grub efibootmgr sudo xorg xterm xorg-twm xorg-xinit i3-gaps pulseaudio pavucontrol rxvt-unicode ranger rofi nemo blender darktable zsh xdg-user-dirs wget w3m feh vim unzip unrar ttf-dejavu steam openvpn okular obs-studio networkmanager networkmanager-openvpn network-manager-applet neomutt neofetch mesa rtorrent krita inkscape imagemagick curl compton cmus audacity firefox qt4 vlc gimp libreoffice go git atom udiskie
 
 # Generate FSTab
 genfstab -U /mnt > /mnt/etc/fstab
