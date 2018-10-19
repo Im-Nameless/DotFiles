@@ -1,0 +1,75 @@
+! Special
+*foreground: 		#ffffff
+*foreground_bold: 	#a8a19f
+*cursor: 		#a8a19f
+*background: 		#1b1918
+
+! Black + DarkGrey
+*color0: 		#363636
+*color8: 		#424242
+
+! DarkRed + Red
+*color1: 		#C37561
+*color9: 		#D19485
+
+! DarkGreen + Green
+*color2: 		#A0A57E
+*color10:		#B6B99D
+
+! DarkYellow + Yellow
+*color3: 		#D1A375
+*color11:		#DEBC9C
+
+! DarkBlue + Blue
+*color4: 		#7985A3
+*color12:		#98A1B9
+
+! DarkMagenta + Magenta
+*color5:	 	#AB716D
+*color13:		#BE918E
+
+! DarkCyan + Cyan (both not tango)
+*color6: 		#98B9B1
+*color14:		#CBE6CB
+
+! LightGrey + White
+*color7: 		#D0D0D0
+*color15:		#E6E6E6
+
+URxvt.intensityStyles:	false
+URxvt.background:       [75]#323232
+URxvt.depth:		32
+URxvt.font: 		xft:DejaVu Sans Mono for Powerline:size=10,xft:SimHei:size=10
+URxvt.letterSpace:	-1
+URxvt.scrollBar:	false
+URxvt.saveLines:	100000
+URxvt.cursorColor:	white
+URxvt.perl-ext-common:	default,matcher,resize-font,keyboard-select
+URxvt.perl-lib:		$HOME/.config/Scripts
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.matcher.button:	1
+URxvt.resize-font.smaller:	C-Down
+URxvt.resize-font.bigger:	C-Up
+URxvt.colorUL:		#4682B4
+
+! rofi
+rofi.font:		DejaVu Sans Mono for Powerline 12 SimHei 12
+
+rofi.color-enabled: 	true
+rofi.color-window: 	argb:75323232, argb:75323232, argb:75323232
+rofi.color-normal: 	argb:75323232, #E6E6E6, argb:75323232, #57C7FF, #323232
+rofi.color-active: 	#FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF
+rofi.color-urgent: 	#FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF
+
+rofi.modi: 		run,ssh,window,drun
+rofi.separator-style: 	solid
+rofi.show-icons: 	false
+rofi.drun-icon-theme: 	Paper
+rofi.sidebar-mode:    	true
+rofi.padding:         	10
+rofi.bw:              	0
+rofi.scrollbar-width: 	0
+rofi.line-margin:     	0
+rofi.lines: 		10
+rofi.terminal: 		urxvt
+rofi.case-sensitive: 	false
