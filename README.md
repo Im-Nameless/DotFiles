@@ -16,5 +16,3 @@ top left to bottom right; polybar, firefox, qutebrowser
 top left to bottom right; polybar
 
 ![alt text](https://raw.githubusercontent.com/Im-Nameless/DotFiles/master/test.jpg)
-
-background
