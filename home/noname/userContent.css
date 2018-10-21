@@ -1,0 +1,31 @@
+/* Clear the background of transparent images. */
+/* Firefox made the background of stand-alone
+   transparent images white, I guess to counter
+   some images having the same color as the
+   background. I never had that problem, and
+   I like my transparent images transparent,
+   so this reverses that. */
+img.transparent {
+	background: transparent !important;
+}
+
+/* ##### DARK 'ABOUT' PAGES ##################### */
+@-moz-document url('about:blank'), url('about:newtab') {
+	body {
+		background-color: #383838 !important;
+	}
+}
+
+
+/* Netflix subtitles */
+@-moz-document url-prefix('https://www.netflix.com/watch/') {
+	.player-timedtext-text-container {
+		background-color: rgba(0,0,0,0.8) !important;
+		padding: 6px 12px;
+		border-radius: 6px;
+	}
+	.player-timedtext-text-container span {
+		text-shadow: none !important;
+		-webkit-font-smoothing: antialiased !important;
+	}
+}
