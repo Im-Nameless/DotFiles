@@ -1,0 +1,113 @@
+/**
+ * User: deadguy
+ * Copyright: deadguy
+ */
+
+configuration {
+	show-icons:      false;
+	sidebar-mode:    true;
+}
+
+* {
+	background-color:            argb:50323232;
+	text-color:                  #E6E6E6;
+	selbg:                       argb:507985A3;
+	actbg:                       argb:507985A3;
+	urgbg:                       argb:50323232;
+	winbg:			     #E6E6E6;
+
+	selected-normal-foreground:  @winbg;
+	normal-foreground:           @text-color;
+	selected-normal-background:  @actbg;
+	normal-background:           @background-color;
+
+	selected-urgent-foreground:  @background-color;
+	urgent-foreground:           @text-color;
+	selected-urgent-background:  @urgbg;
+	urgent-background:           @background-color;
+
+	selected-active-foreground:  @winbg;
+	active-foreground:           @text-color;
+	selected-active-background:  @actbg;
+	active-background:           @selbg;
+
+	line-margin:                 2;
+	line-padding:                2;
+	separator-style:             "none";
+	hide-scrollbar:              "true";
+	margin:                      0;
+	padding:                     0;
+}
+
+window {
+	location:	 west;
+	anchor:		 west;
+	height:		 100%;
+	width:		 15%;
+	orientation: horizontal;
+	children:	 [mainbox];
+}
+
+mainbox {
+	spacing:  0em;
+	children: [ entry,listview,sidebar ];
+}
+
+button { padding: 0px 0px; }
+
+button selected {
+	background-color: @active-background;
+	text-color:       @normal-foreground;
+}
+
+inputbar {
+	padding: 0px;
+	spacing: 0px;
+}
+
+listview {
+	spacing: 0em;
+	dynamic: false;
+	cycle:   true;
+}
+
+element { padding: 5px; }
+
+entry {
+	expand:         false;
+	text-color:     @normal-foreground;
+	vertical-align: 1;
+	padding:        5px;
+}
+
+element normal.normal {
+	background-color: @normal-background;
+	text-color:       @normal-foreground;
+}
+
+element normal.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+
+element normal.active {
+	background-color: @active-background;
+	text-color:       @active-foreground;
+}
+
+element selected.normal {
+	background-color: @selected-normal-background;
+	text-color:       @selected-normal-foreground;
+	border:           0 0px solid 0 0;
+	border-color:	    @active-background;
+}
+
+element selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @selected-urgent-foreground;
+}
+
+element selected.active {
+	background-color: @selected-active-background;
+	text-color:       @selected-active-foreground;
+}
