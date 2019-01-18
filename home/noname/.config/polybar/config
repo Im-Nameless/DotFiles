@@ -17,8 +17,8 @@
 ;==========================================================
 
 [colors]
-background = #75323232
-background-alt = #75323232
+background = #80323232
+background-alt = #80323232
 foreground = #E6E6E6
 foreground-alt = #E6E6E6
 primary = #ffb52a
@@ -29,50 +29,38 @@ alert = #bd2c40
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 20
-;offset-x = 10
-;offset-y = 10
-;radius = 6.0
 fixed-center = false
 
-background = #75323232
+background = #80323232
 foreground = #E6E6E6
 
 line-size = 3
 line-color = #f00
 
-;border-size = 4
-;border-color = #00000000
-
-padding-left = 0
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = DejaVuSansMono:pixelsize=12:antialias=true;2
+font-1 = DejaVuSansMonoNerdFont:pixelsize=14:antialias=true;3
+font-2 = fixed:pixelsize=10;1
+font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-4 = siji:pixelsize=10;1
 
 modules-left = i3
-modules-center = spotify 
-modules-right = pulseaudio cpu temperature memory wlan eth battery date filesystem
+modules-center = spotify
+modules-right = pulseaudio cpu temperature memory wlan eth filesystem xkeyboard battery date
 
 tray-position = right
 tray-padding = 2
-;tray-transparent = true
+tray-transparent = true
 tray-background = #80323232
-
-;wm-restack = bspwm
-;wm-restack = i3
-
+wm-restack = i3
 ;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -87,165 +75,114 @@ format-underline = ${xrdb:color.color3}
 format-background = ${colors.background2}
 format-padding = 2
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
-
-format-prefix = "⌨ "
-format-prefix-foreground = #E6E6E6
+format = <label-layout>
+format-prefix = "-"
+format-prefix-foreground = #98B9B1
 label-layout = %layout%
-
+label-layout-foreground = #7985A3
 label-indicator-padding = 2
 label-indicator-margin = 1
 
 [module/filesystem]
 type = internal/fs
 interval = 25
-
 mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = #C37561
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+format-unmounted-prefix = "-"
+format-unmounted-prefix-foreground = #E6E6E6
+format-mounted-prefix = "-"
+format-mounted-prefix-foreground = #E6E6E6
+label-mounted = %percentage_used%%
+label-mounted-foreground = #E6E6E6
+label-unmounted = unmounted
+label-unmounted-foreground = #E6E6E6
 
 [module/i3]
 type = internal/i3
 index-sort = true
 wrapping-scroll = false
-
-ws-icon-0 = 1;I
-ws-icon-1 = 2;II
-ws-icon-2 = 3;III
-ws-icon-3 = 4;IV
-ws-icon-4 = 5;V
-ws-icon-5 = 6;VI
-ws-icon-6 = 7;VII
-ws-icon-7 = 8;VIII
-ws-icon-8 = 9;IX
-ws-icon-9= 10;X
-ws-icon-default = ?
-
-format = <label-state> <label-mode>
-
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-background = #e60053
-
+ws-icon-0 = 1;ﲵ
+ws-icon-1 = 2;ﳑ
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;ﯣ
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;﯑
+ws-icon-9= 10;
+ws-icon-default = 
+format = <label-state>
 label-focused = %icon%
 label-focused-foreground = #7985A3
-label-focused-padding = 4
-
+label-focused-padding = 2
 label-unfocused = %icon%
-label-unfocused-padding = 4
-
+label-unfocused-padding = 2
 label-visible = %icon%
-label-visible-padding = 4
-
+label-visible-padding = 2
 label-urgent = %icon%
 label-urgent-foreground = #C37561
-label-urgent-padding = 4
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+label-urgent-padding = 2
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = "CPU "
-format-prefix-foreground = #E6E6E6
-label = %percentage:2%%
+interval = 1
+format-prefix = "龍-"
+format-prefix-foreground = #A0A57E
+label = %percentage%%
+label-foreground = #98B9B1
 
 [module/memory]
 type = internal/memory
-interval = 2
-format-prefix = "RAM "
-format-prefix-foreground = #E6E6E6
+interval = 1
+format-prefix = "-"
+format-prefix-foreground = #A0A57E
 label = %percentage_used%%
+label-foreground = #98B9B1
 
 [module/wlan]
 type = internal/network
 interface = wlp3s0
 interval = 3.0
-format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
-format-packetloss = <animation-packetloss> <label-connected>
-animation-packetloss-0 = ⚠
-animation-packetloss-0-foreground = #C37561
-animation-packetloss-1 = ⚠
-animation-packetloss-1-foreground = #CBE6CB
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-ramp-signal-0 = •․
-ramp-signal-1 = •⁚
-ramp-signal-2 = •⁖
-ramp-signal-3 = •⁘
-ramp-signal-4 = •⁙
-ramp-signal-foreground = #E6E6E6
+format-connected = <label-connected>
+format-connected-prefix = "-"
+format-connected-prefix-foreground = #C37561
+label-connected = %local_ip%
+label-connected-foreground = #D1A375
 
 [module/eth]
 type = internal/network
 interface = enp0s25
 interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected = <label-connected>
+format-connected-prefix = "-"
+format-connected-prefix-foreground = #C37561
 label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-connected-foreground = #D1A375
 
 [module/date]
 type = internal/date
-interval = 5
-
-date = %y-%m-%d
-time = %I:%M
-
-;format-prefix = ""
-;format-prefix-foreground = #E6E6E6
-
-label = %date% %time%
+interval = 1
+date = %y/%m/%d
+time = %I:%M:%S
+label = -%date% -%time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-format-volume = VOL <bar-volume> <label-volume>
+format-volume-prefix = "墳-"
+format-volume-prefix-foreground = #AB716D
+format-volume = <label-volume>
 label-volume = %percentage%%
-label-volume-foreground = #E6E6E6
-
+label-volume-foreground = #D1A375
+format-muted-prefix = "婢-"
+format-muted-prefix-foreground = #AB716D
+format-muted = <label-muted>
 label-muted = muted
-label-muted-foreground = #666
-
+label-muted-foreground = #D1A375
 bar-volume-width = 10
 bar-volume-foreground-0 = #B6B99D
 bar-volume-foreground-1 = #A0A57E
@@ -267,51 +204,43 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
-
-format-full-prefix = "█ "
-format-full-prefix-foreground = #E6E6E6
-
-format-charging = <animation-charging> <label-charging>
-format-discharging = <animation-discharging> <label-discharging>
+format-full-prefix = "-"
+format-full-prefix-foreground = #D1A375
+format-charging = <animation-charging>-<label-charging>
+format-discharging = <animation-discharging>-<label-discharging>
 label-charging = %percentage%%
+label-charging-foreground = #C37561
 label-discharging = %percentage%%
+label-discharging-foreground = #C37561
 label-full = %percentage%%
-
-ramp-capacity-0 = ▁
-ramp-capacity-1 = ▂
-ramp-capacity-2 = ▃
-ramp-capacity-3 = ▄
-ramp-capacity-4 = ▅
-ramp-capacity-5 = ▆
-ramp-capacity-6 = ▇
-ramp-capacity-7 = █
-
-bar-capacity-width = 10
-
-animation-charging-0 = ⚡▁
-animation-charging-1 = ⚡▂
-animation-charging-2 = ⚡▃
-animation-charging-3 = ⚡▄
-animation-charging-4 = ⚡▅
-animation-charging-5 = ⚡▆
-animation-charging-6 = ⚡▇
-animation-charging-7 = ⚡█
-animation-charging-framerate = 750
-
-animation-discharging-0 = █
-animation-discharging-1 = ▇
-animation-discharging-2 = ▆
-animation-discharging-3 = ▅
-animation-discharging-4 = ▄
-animation-discharging-5 = ▃
-animation-discharging-6 = ▂
-animation-discharging-7 = ▁
+label-full-foreground = #C37561
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-foreground = #D1A375
+animation-charging-framerate = 1000
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-5 = 
+animation-discharging-6 = 
+animation-discharging-7 = 
+animation-discharging-8 = 
+animation-discharging-9 = 
+animation-discharging-10 = 
+animation-discharging-foreground = #D1A375
 animation-discharging-framerate = 500
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 80
 format = <label>
 format-warn = <label-warn>
 label = %temperature-c%
