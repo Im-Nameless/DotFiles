@@ -1,3 +1,4 @@
+
 /* ##### TABS TOOLBAR ##################################### */
 
 /* Hide main tabs toolbar */
@@ -5,25 +6,11 @@
 	visibility: collapse;
 }
 
-
-toolbarbutton#alltabs-button {
-  -moz-binding: url("./userChrome/userChrome.xml#execute_javascript_code");
-}
-
-
 /* ##### URL BAR ########################################## */
 
-/* Hide (i) in URL bar */
-#identity-icon {
-	width: 0 !important;
-}
 /* Adjust lock icon to be closer to edge */
 #identity-box {
 	padding-inline-start: 2px !important;
-}
-/* Custom bindings.xml in same folder as userChrome, for simple URL */
-#urlbar {
-	-moz-binding: url("bindings.xml#urlbar") !important;
 }
 /* Center URL */
 #urlbar .urlbar-input-box {
@@ -38,10 +25,6 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 .bookmark-item .toolbarbutton-icon {
 	display: none;
 }
-
-
-
-
 
 /* ##### SIDEBAR ########################################## */
 
@@ -89,6 +72,3 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 	margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
 }
 
-toolbarbutton#alltabs-button {
-  -moz-binding: url("./userChrome/userChrome.xml#execute_javascript_code");
-}
