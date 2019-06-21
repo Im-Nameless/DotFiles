@@ -37,9 +37,9 @@
 *color15:		#E6E6E6
 
 URxvt.intensityStyles:	false
-URxvt.background:       [75]#323232
+URxvt.background:       [85]#323232
 URxvt.depth:		32
-URxvt.font: 		xft:DejaVu Sans Mono for Powerline:size=10,xft:SimHei:size=10
+URxvt.font: 		xft:DejaVuSansMonoNerdFont:size=10
 URxvt.letterSpace:	-1
 URxvt.scrollBar:	false
 URxvt.saveLines:	100000
@@ -51,25 +51,3 @@ URxvt.matcher.button:	1
 URxvt.resize-font.smaller:	C-Down
 URxvt.resize-font.bigger:	C-Up
 URxvt.colorUL:		#4682B4
-
-! rofi
-rofi.font:		DejaVu Sans Mono for Powerline 12 SimHei 12
-
-rofi.color-enabled: 	true
-rofi.color-window: 	argb:75323232, argb:75323232, argb:75323232
-rofi.color-normal: 	argb:75323232, #E6E6E6, argb:75323232, #57C7FF, #323232
-rofi.color-active: 	#FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF
-rofi.color-urgent: 	#FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF
-
-rofi.modi: 		run,ssh,window,drun
-rofi.separator-style: 	solid
-rofi.show-icons: 	false
-rofi.drun-icon-theme: 	Paper
-rofi.sidebar-mode:    	true
-rofi.padding:         	10
-rofi.bw:              	0
-rofi.scrollbar-width: 	0
-rofi.line-margin:     	0
-rofi.lines: 		10
-rofi.terminal: 		urxvt
-rofi.case-sensitive: 	false
