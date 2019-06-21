@@ -43,37 +43,25 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = DejaVuSansMono:pixelsize=12:antialias=true;2
+font-0 = DejaVuSansMono:pixelsize=12:antialias=true;3
 font-1 = DejaVuSansMonoNerdFont:pixelsize=14:antialias=true;3
 font-2 = fixed:pixelsize=10;1
 font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-4 = siji:pixelsize=10;1
 
-modules-left = i3
-modules-center = spotify
-modules-right = pulseaudio cpu temperature memory wlan eth filesystem xkeyboard battery date
+modules-left =
+modules-center = cmus
+modules-right = pulseaudio-rofi-output pulseaudio cpu temperature fan-speed memory filesystem updates xkeyboard battery date time
 
 tray-position = right
 tray-padding = 2
-tray-transparent = true
 tray-background = #80323232
-wm-restack = i3
+;wm-restack = i3
 ;override-redirect = true
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-[module/spotify]
-type = custom/script
-exec = $HOME/.config/polybar/spotify.sh
-exec-if = pgrep -x spotify
-interval = 5
-format-prefix = "♫ "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color.color3}
-format-background = ${colors.background2}
-format-padding = 2
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -119,14 +107,45 @@ ws-icon-default = 
 format = <label-state>
 label-focused = %icon%
 label-focused-foreground = #7985A3
-label-focused-padding = 2
+label-focused-padding = 1
 label-unfocused = %icon%
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 label-visible = %icon%
-label-visible-padding = 2
+label-visible-padding = 1
 label-urgent = %icon%
 label-urgent-foreground = #C37561
-label-urgent-padding = 2
+label-urgent-padding = 1
+
+[module/ewmh]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-scroll = false
+index-sort = true
+icon-0 = 1;ﲵ
+icon-1 = 2;ﳑ
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;ﯣ
+icon-6 = 7;
+icon-7 = 8;
+icon-8 = 9;﯑
+icon-9= 10;
+icon-default = 
+format = <label-state>
+label-focused = %icon%
+label-focused-foreground = #7985A3
+label-focused-padding = 1
+label-unfocused = %icon%
+label-unfocused-padding = 1
+label-visible = %icon%
+label-visible-padding = 1
+label-urgent = %icon%
+label-urgent-foreground = #C37561
+label-urgent-padding = 1
+label-occupied = %icon%
+label-occupied-padding = 1
+label-occupied-foreground = #A0A57E
 
 [module/cpu]
 type = internal/cpu
@@ -144,32 +163,19 @@ format-prefix-foreground = #A0A57E
 label = %percentage_used%%
 label-foreground = #98B9B1
 
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
-format-connected = <label-connected>
-format-connected-prefix = "-"
-format-connected-prefix-foreground = #C37561
-label-connected = %local_ip%
-label-connected-foreground = #D1A375
-
-[module/eth]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-format-connected = <label-connected>
-format-connected-prefix = "-"
-format-connected-prefix-foreground = #C37561
-label-connected = %local_ip%
-label-connected-foreground = #D1A375
-
 [module/date]
 type = internal/date
 interval = 1
 date = %y/%m/%d
+format-prefix = "-"
+label = %date%
+
+[module/time]
+type = internal/date
+interval = 1
 time = %I:%M:%S
-label = -%date% -%time%
+format-prefix = "-"
+label = %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -183,21 +189,6 @@ format-muted-prefix-foreground = #AB716D
 format-muted = <label-muted>
 label-muted = muted
 label-muted-foreground = #D1A375
-bar-volume-width = 10
-bar-volume-foreground-0 = #B6B99D
-bar-volume-foreground-1 = #A0A57E
-bar-volume-foreground-2 = #DEBC9C
-bar-volume-foreground-3 = #D1A375
-bar-volume-foreground-4 = #D19485
-bar-volume-foreground-5 = #C36561
-bar-volume-gradient = false
-bar-volume-indicator = ┃
-bar-volume-indicator-font = 2
-bar-volume-fill = ━
-bar-volume-fill-font = 2
-bar-volume-empty = ╍
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = #E6E6E6
 
 [module/battery]
 type = internal/battery
@@ -248,7 +239,42 @@ label-warn = %temperature-c%
 label-warn-foreground = #C37561
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
-; vim:ft=dosini
+[module/hlws]
+type = custom/script
+exec = python ~/.config/polybar/hlws.sh
+tail = true
+scroll-up = herbstclient use_index -1 --skip-visible
+scroll-down = herbstclient use_index +1 --skip-visible
+
+[module/cmus]
+type = custom/script
+exec = sh ~/.config/polybar/cmus.sh
+exec-if = pgrep -x cmus
+interval = 1
+click-left = cmus-remote -n
+click-right = cmus-remote -r
+click-middle = cmus-remote -u
+format = <label>
+label = %output%
+
+[module/fan-speed]
+type = custom/script
+exec = ~/.config/polybar/fan_speed.sh
+interval = 1
+
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/updates.sh
+interval = 600
+
+[module/pulseaudio-rofi-output]
+type = custom/script
+exec = ~/.config/polybar/pulseaudio-rofi.sh --output_volume_listener
+tail = true
+click-right = ~/.config/polybar/pulseaudio-rofi.sh --output
+click-left = ~/.config/polybar/pulseaudio-rofi.sh --mute
+scroll-up =  ~/.config/polybar/pulseaudio-rofi.sh --volume_up
+scroll-down = ~/.config/polybar/pulseaudio-rofi.sh --volume_down
