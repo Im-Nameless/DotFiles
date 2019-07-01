@@ -1,14 +1,9 @@
-#  ___  ________                 ________  ________  ________  ________
-# |\  \|\_____  \               |\   ____\|\   __  \|\   __  \|\   ____\
-# \ \  \|____|\ /_  ____________\ \  \___|\ \  \|\  \ \  \|\  \ \  \___|_
-#  \ \  \    \|\  \|\____________\ \  \  __\ \   __  \ \   ____\ \_____  \
-#   \ \  \  __\_\  \|____________|\ \  \|\  \ \  \ \  \ \  \___|\|____|\  \
-#    \ \__\|\_______\              \ \_______\ \__\ \__\ \__\     ____\_\  \
-#     \|__|\|_______|               \|_______|\|__|\|__|\|__|    |\_________\
-#                                                                \|_________|
-
-# ASCII Made With http://patorjk.com/software/taag/
-
+# ██╗██████╗        ██████╗  █████╗ ██████╗ ███████╗
+# ██║╚════██╗      ██╔════╝ ██╔══██╗██╔══██╗██╔════╝
+# ██║ █████╔╝█████╗██║  ███╗███████║██████╔╝███████╗
+# ██║ ╚═══██╗╚════╝██║   ██║██╔══██║██╔═══╝ ╚════██║
+# ██║██████╔╝      ╚██████╔╝██║  ██║██║     ███████║
+# ╚═╝╚═════╝        ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚══════╝
 #  _____           _
 # |  ___|__  _ __ | |_ ___
 # | |_ / _ \| '_ \| __/ __|
@@ -27,7 +22,7 @@ font pango:DejaVu Sans Mono Nerd Font 8
 #                             |_|
 
 # Feh (background)
-exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/anime6.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/Backgrounds/anime6.jpg
 
 # Polybar (bar)
 exec --no-startup-id polybar bar
@@ -44,28 +39,31 @@ exec --no-startup-id nm-applet
 # udiskie (usb drive manager)
 exec --no-startup-id udiskie -t
 
+# Redshift (blue light filter)
+exec --no-startup-id redshift-gtk
+
 #  _ _____
 # (_)___ /
 # | | |_ \
 # | |___) |
 # |_|____/
 
-set_from_resource $black   	color0  #000000
-set_from_resource $darkgrey	color8  #000000
-set_from_resource $darkred     	color1  #000000
-set_from_resource $red         	color9  #000000
-set_from_resource $darkgreen   	color2  #000000
-set_from_resource $green       	color10 #000000
-set_from_resource $darkyellow  	color3  #000000
-set_from_resource $yellow      	color11 #000000
-set_from_resource $darkblue    	color4  #000000
-set_from_resource $blue        	color12 #000000
-set_from_resource $darkmagenta 	color5  #000000
-set_from_resource $magenta     	color13 #000000
-set_from_resource $darkcyan    	color6  #000000
-set_from_resource $cyan        	color14 #000000
-set_from_resource $lightgray   	color7  #000000
-set_from_resource $white       	color15 #000000
+set_from_resource $black   	color0
+set_from_resource $darkgrey	color8
+set_from_resource $darkred     	color1
+set_from_resource $red         	color9
+set_from_resource $darkgreen   	color2
+set_from_resource $green       	color10
+set_from_resource $darkyellow  	color3
+set_from_resource $yellow      	color11
+set_from_resource $darkblue    	color4
+set_from_resource $blue        	color12
+set_from_resource $darkmagenta 	color5
+set_from_resource $magenta     	color13
+set_from_resource $darkcyan    	color6
+set_from_resource $cyan        	color14
+set_from_resource $lightgray   	color7
+set_from_resource $white       	color15
 
 # Gaps
 gaps inner 10
@@ -87,9 +85,13 @@ set $mod Mod4
 # Switch keyboard layout
 exec_always "setxkbmap -model pc104 -layout us,ca -variant ,, -option grp:alt_shift_toggle"
 
-# Scrot (screenshot)
-bindsym --release $mod+Print exec scrot -s /home/$USER/Pictures/Screenshots/'%Y-%m-%d_%H-%M-%S'.png
-bindsym Print exec scrot /home/$USER/Pictures/Screenshots/'%Y-%m-%d_%H-%M-%S'.png
+# Maim (Screenshots)
+bindsym Print exec maim ~/Pictures/Screenshots/$(date +%s).png
+bindsym Shift+Print exec maim | xclip -selection clipboard -t image/png
+bindsym Tab+Print exec --no-startup-id bash -c "maim ~/Pictures/Screenshots/$(date +%s).png && cp ~/Pictures/Screenshots/$(date +%s).png /tmp/screenshot.png && curl -F file=@/tmp/screenshot.png 'https://0x0.st/' | xsel -b"
+bindsym $mod+Print exec maim -s ~/Pictures/Screenshots/$(date +%s).png
+bindsym $mod+Shift+Print exec maim -s | xclip -selection clipboard -t image/png
+bindsym $mod+Tab+Print exec bash -c "maim -s ~/Pictures/Screenshots/$(date +%s).png && cp ~/Pictures/Screenshots/$(date +%s).png /tmp/screenshot.png && curl -F file=@/tmp/screenshot.png 'https://0x0.st/' | xsel -b"
 
 # Ranger (file manager)
 bindsym $mod+Shift+Return exec i3-sensible-terminal -e ranger
@@ -113,20 +115,20 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show run -theme sidetab
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+h focus left
+#bindsym $mod+j focus down
+#bindsym $mod+k focus up
+#bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+#bindsym $mod+Shift+h move left
+#bindsym $mod+Shift+j move down
+#bindsym $mod+Shift+k move up
+#bindsym $mod+Shift+l move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
