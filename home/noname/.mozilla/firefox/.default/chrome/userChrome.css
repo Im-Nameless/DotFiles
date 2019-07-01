@@ -1,32 +1,74 @@
-/* Clear the background of transparent images. */
-/* Firefox made the background of stand-alone
-   transparent images white, I guess to counter
-   some images having the same color as the
-   background. I never had that problem, and
-   I like my transparent images transparent,
-   so this reverses that. */
-img.transparent {
-	background: transparent !important;
+
+/* ##### TABS TOOLBAR ##################################### */
+
+/* Hide main tabs toolbar */
+#TabsToolbar {
+	visibility: collapse;
 }
 
-/* ##### DARK 'ABOUT' PAGES ##################### */
-@-moz-document url('about:blank'), url('about:newtab') {
-	body {
-		background-color: #383838 !important;
-	}
+/* ##### URL BAR ########################################## */
+
+/* Adjust lock icon to be closer to edge */
+#identity-box {
+	padding-inline-start: 2px !important;
+}
+/* Center URL */
+#urlbar .urlbar-input-box {
+	text-align: center;
+	margin-bottom: 1px;
+}
+/* Bookmark padding */
+toolbarbutton.bookmark-item:not(.subviewbutton) {
+	padding: 1px 6px !important;
+}
+/* Get rid of bookmark icon */
+.bookmark-item .toolbarbutton-icon {
+	display: none;
+}
+
+/* ##### SIDEBAR ########################################## */
+
+/* Sidebar min and max width removal */
+#sidebar {
+	max-width: none !important;
+	min-width: 0px !important;
 }
 
 
-/* Netflix subtitles */
-@-moz-document url-prefix('https://www.netflix.com/watch/') {
-	.player-timedtext-text-container {
-		background-color: rgba(0,0,0,0.8) !important;
-		padding: 6px 12px;
-		border-radius: 6px;
-	}
-	.player-timedtext-text-container span {
-		text-shadow: none !important;
-		-webkit-font-smoothing: antialiased !important;
-	}
+/* Remove below if not using TreeStyleTab extension */
+
+/* Hide splitter, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+	display: none !important;
+}
+/* Hide sidebar header, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+	visibility: collapse;
+}
+
+/* Shrink sidebar until hovered, when using Tree Style Tab. */
+:root {
+	--thin-tab-width: 30px;
+	--wide-tab-width: 200px;
+}
+#sidebar-box:not([sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]) {
+	min-width: var(--wide-tab-width) !important;
+	max-width: none !important;
+}
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+	overflow: hidden !important;
+	position: relative !important;
+	transition: all 200ms !important;
+	min-width: var(--thin-tab-width) !important;
+	max-width: var(--thin-tab-width) !important;
+}
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover,
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar {
+	transition: all 200ms !important;
+	min-width: var(--wide-tab-width) !important;
+	max-width: var(--wide-tab-width) !important;
+}
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover {
+	margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
 }
 
